@@ -12,6 +12,6 @@ This is a simple weather forecast app. We don't guarantee correctness of the wea
 2. [Doris](https://github.com/pingdori)
    - Build this repository
    - code review
-3. [Jeff](https://github.com/Jeff)
+3. [Jeff](https://github.com/JackTsai890405)
    - Front-end developer
    - code review
