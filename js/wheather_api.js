@@ -27,7 +27,7 @@ let precipitation_in_city={
 }// 雨量單位：毫米
 
 let info_to_string=JSON.stringify(info).replace(/\:/g, "=").replace(/\,/g, "&").replace(/\{/g, "").replace(/\}/g, "").replace(/\"/g, "");//將json變為字串
-let url_api=url+info_to_string
+let url_api=url+info_to_string;
 
 export async function get_precipitation_in_Municipality(){
     return await fetch(url_api).then(response=>{
@@ -48,6 +48,7 @@ export async function get_precipitation_in_Municipality(){
             precipitation_in_city[key]=precipitation_in_city[key]/station_in_city[key];
         }
         console.log(precipitation_in_city);
+        return precipitation_in_city;
     })
 }
 
