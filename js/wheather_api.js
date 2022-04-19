@@ -26,7 +26,7 @@ let precipitation_in_city={
     "高雄市":0
 }// 雨量單位：毫米
 
-let info_to_string=JSON.stringify(info).replace(/\:/g, "=").replace(/\,/g, "&").replace(/\{/g, "").replace(/\}/g, "").replace(/\"/g, "");
+let info_to_string=JSON.stringify(info).replace(/\:/g, "=").replace(/\,/g, "&").replace(/\{/g, "").replace(/\}/g, "").replace(/\"/g, "");//將json變為字串
 let url_api=url+info_to_string
 
 export async function get_precipitation_in_Municipality(){
@@ -35,16 +35,16 @@ export async function get_precipitation_in_Municipality(){
     }).then(result=>{
         return result["records"]["location"];
     }).then(data=>{
-        for (let i=0;i<data.length;i++){
-            if (data[i]["parameter"][0]["parameterValue"] in precipitation_in_city){
-                if(data[i]["weatherElement"][0]["elementValue"]<0){
-                    continue;
+        for (let i=0;i<data.length;i++){//跑全部資料
+            if (data[i]["parameter"][0]["parameterValue"] in precipitation_in_city){//判斷是否為6都資料
+                if(data[i]["weatherElement"][0]["elementValue"]<0){//當6都資料中的雨量小於0
+                    continue;//進入下一個迴圈(剔除異常資訊)
                 }
-                precipitation_in_city[data[i]["parameter"][0]["parameterValue"]]+=Number(data[i]["weatherElement"][0]["elementValue"]);
-                station_in_city[data[i]["parameter"][0]["parameterValue"]]++;
+                precipitation_in_city[data[i]["parameter"][0]["parameterValue"]]+=Number(data[i]["weatherElement"][0]["elementValue"]);//計算六都總雨量
+                station_in_city[data[i]["parameter"][0]["parameterValue"]]++;//觀測站數量+1
             }
         }
-        for (key in precipitation_in_city){
+        for (key in precipitation_in_city){//將總雨量除以觀測站數量得到六都24H平均雨量
             precipitation_in_city[key]=precipitation_in_city[key]/station_in_city[key];
         }
         console.log(precipitation_in_city);
