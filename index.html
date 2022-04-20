@@ -1,38 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./css/style.css"/>
-    <title>Document</title>
-  </head>
-  <body>
-    <nav class="nav"><h1>台灣即時雨量資訊</h1></nav>
-    <ul class="weather block">
-      <li>資料來源：政府雨量資料平台</li>
-      <li>雨量單位：毫米</li>
-      <li>更新時間：10分鐘</li>
-      <li>
-        <ul>
-          <li>雨量分類定義：</li>
-          <li>大雨：</li>
-          <li>暴雨：</li>
-          <li>大暴雨：</li>
-          <li>超大雷雨：</li>
-        </ul>
-      </li>
-      <li>背景圖片：</li>
-      <li>備註</li>
-    </ul>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="../css/document-reset.css">
+    <link rel="stylesheet" href="../css/customize-reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
     <div class="container">
-      <ul>
-        <li>基隆市<button type="">點擊查看</button></li>
-        <li>台北市<button type="">點擊查看</button></li>
-        <li>新北市<button type="">點擊查看</button></li>
-      </ul>
+        <header class="header">
+            <h1 class="header__title">台灣六都即時雨量資訊</h1>
+        </header>
+    
+        <ul class="raindrop">
+            <li class="raindrop__item  raindrop__item--backgroundImage">
+                <h3 class="raindrop__subtitle mb-15">臺北市</h3>
+                <ul class="raindrop__intro mb-15">
+                    <li class="mb-8">10分鐘平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                    <li class="mb-8">3小時平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                    <li>日平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                </ul>
+                <button class="raindrop__button">觀看資訊</button>
+            </li>
+            <li class="raindrop__item">
+                <h3 class="raindrop__subtitle mb-15">高雄市</h3>
+                <ul class="raindrop__intro mb-15">
+                    <li class="mb-8">10分鐘平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                    <li class="mb-8">1小時平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                    <li>日平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                </ul>
+                <button class="raindrop__button">觀看資訊</button>
+            </li>
+            <li class="raindrop__item">
+                <h3 class="raindrop__subtitle mb-15">新北市</h3>
+                <ul class="raindrop__intro mb-15">
+                    <li class="mb-8">10分鐘平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                    <li class="mb-8">1小時平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                    <li>日平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                </ul>
+                <button class="raindrop__button">觀看資訊</button>
+            </li>
+            <li class="raindrop__item">
+                <h3 class="raindrop__subtitle mb-15">臺中市</h3>
+                <ul class="raindrop__intro mb-15">
+                    <li class="mb-8">10分鐘平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                    <li class="mb-8">1小時平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                    <li>日平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                </ul>
+                <button class="raindrop__button">觀看資訊</button>
+            </li>
+            <li class="raindrop__item">
+                <h3 class="raindrop__subtitle mb-15">臺南市</h3>
+                <ul class="raindrop__intro mb-15">
+                    <li class="mb-8">10分鐘平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                    <li class="mb-8">1小時平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                    <li>日平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                </ul>
+                <button class="raindrop__button">觀看資訊</button>
+            </li>
+            <li class="raindrop__item">
+                <h3 class="raindrop__subtitle mb-15">桃園市</h3>
+                <ul class="raindrop__intro mb-15">
+                    <li class="mb-8">10分鐘平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                    <li class="mb-8">1小時平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                    <li>日平均累積雨量<span class="raindrop__intro--hint">0.00</span></li>
+                </ul>
+                <button class="raindrop__button">觀看資訊</button>
+            </li>
+        </ul>
     </div>
 
     <script src="./js/index.js"></script>
-  </body>
+    <script src="./js/buttonIn.js"></script>
+    <script src="./js/wheather_api.js"></script>
+    <script src="./js/homepage.js"></script>
+</body>
 </html>
