@@ -30,17 +30,12 @@ async function init(district){
             for (let i=0;i<raindrop__button.length;i++){
                 raindrop__button[i].textContent="返回";
             }
-        }) 
-    }
-
-    raindropButton.forEach((item, index, array) => {
-        item.addEventListener('click', function () {
-            city = raindropSubtitle[index];
+            city = raindropSubtitle[i];
             imagePath = cityImage[city.textContent];
             image.src = imagePath;
             container.appendChild(image);
-        })
-    })
+        }) 
+    }
 }
 
 function clean_content(){
