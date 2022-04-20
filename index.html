@@ -70,9 +70,14 @@
                 </ul>
                 <button class="raindrop__button">觀看資訊</button>
             </li>
+       
         </ul>
+        <div id="map"></div>
+        <p id="note">觀測雨量熱度圖(3天內)</p>
     </div>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZaZknXUBheETthpF3E3oe5fuuISkPAnM&libraries=visualization&callback=initMap" defer></script>
+    <script src="./js/heatmap.js"></script>
+    <script src="./js/wheather_api.js"></script>
     <script src="./js/index.js"></script>
     <script src="./js/buttonIn.js"></script>
 </body>

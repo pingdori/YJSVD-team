@@ -18,7 +18,10 @@ async function init(district){
         show_precipitation(data_10m, i, 0);
         show_precipitation(data_3h, i, 1);
         show_precipitation(data_24h, i, 2);
+        
     }
+
+    initMap();
 
     for (let i=0;i<raindrop__button.length;i++){
         raindrop__button[i].addEventListener("click", ()=>{
