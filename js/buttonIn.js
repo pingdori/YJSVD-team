@@ -11,11 +11,14 @@ const cityImage = {
     '桃園市': '../images/taoyuan.jpg',
 }
 
+const image = document.createElement('img')
+image.className = "background__image";
+image.src = '../images/taipei.jpg'
+container.appendChild(image);
+
 let city
 raindropButton.forEach((item, index, array) => {
     item.addEventListener('click', function () {
-        const image = document.createElement('img')
-        image.className = "background__image";
         city = raindropSubtitle[index];
         imagePath = cityImage[city.textContent];
         image.src = imagePath;
