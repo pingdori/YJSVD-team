@@ -7,6 +7,12 @@ let info={
     "parameterName":"CITY",
 }
 
+const period={
+    10:"MIN_10",
+    3:"HOUR_3",
+    24:"HOUR_24"
+}
+
 let station_in_city={
     "臺北市":0,
     "新北市":0,
@@ -28,124 +34,40 @@ let precipitation_in_city={
 
 let dist={}//各區降雨量
 
-let info_to_string=JSON.stringify(info).replace(/\:/g, "=").replace(/\,/g, "&").replace(/\{/g, "").replace(/\}/g, "").replace(/\"/g, "");//將json變為字串
-let url_api=url+info_to_string;
-
-export async function get_24h_precipitation_in_Municipality(district){
-    info["elementName"]="HOUR_24";
+async function get_precipitation_in_Municipality(district, p){
+    info["elementName"]=period[p];
+    let info_to_string=JSON.stringify(info).replace(/\:/g, "=").replace(/\,/g, "&").replace(/\{/g, "").replace(/\}/g, "").replace(/\"/g, "");//將json變為字串
+    let url_api=url+info_to_string;
     return await fetch(url_api).then(response=>{
         return response.json();
     }).then(result=>{
         return result["records"]["location"];
     }).then(data=>{
-        if(district){
             for (let i=0;i<data.length;i++){//跑全部資料
-                if (data[i]["parameter"][0]["parameterValue"] == district){//判斷是否為6都資料
-                    if(data[i]["weatherElement"][0]["elementValue"]<0){//當6都資料中的雨量小於0
-                        continue;//進入下一個迴圈(剔除異常資訊)
+                if (district){
+                    if (data[i]["parameter"][0]["parameterValue"] == district){//判斷是否為指定直轄市資料
+                        if(data[i]["weatherElement"][0]["elementValue"]<0){//當指定直轄市中的雨量小於0
+                            continue;//進入下一個迴圈(剔除異常資訊)
+                        }
+                        dist[data[i]["locationName"]]=Number(data[i]["weatherElement"][0]["elementValue"]);//各觀測站雨量
                     }
-                    dist[data[i]["locationName"]]=Number(data[i]["weatherElement"][0]["elementValue"]);//個觀測站雨量
-                }
-            }
-            console.log(dist);
-            return dist;
-        }else{
-            for (let i=0;i<data.length;i++){//跑全部資料
-                if (data[i]["parameter"][0]["parameterValue"] in precipitation_in_city){//判斷是否為6都資料
-                    if(data[i]["weatherElement"][0]["elementValue"]<0){//當6都資料中的雨量小於0
-                        continue;//進入下一個迴圈(剔除異常資訊)
+                }else{
+                    if (data[i]["parameter"][0]["parameterValue"] in precipitation_in_city){//判斷是否為6都資料
+                        if(data[i]["weatherElement"][0]["elementValue"]<0){//當6都資料中的雨量小於0
+                            continue;//進入下一個迴圈(剔除異常資訊)
+                        }
+                        precipitation_in_city[data[i]["parameter"][0]["parameterValue"]]+=Number(data[i]["weatherElement"][0]["elementValue"]);//計算六都總雨量
+                        station_in_city[data[i]["parameter"][0]["parameterValue"]]++;//觀測站數量+1
                     }
-                    precipitation_in_city[data[i]["parameter"][0]["parameterValue"]]+=Number(data[i]["weatherElement"][0]["elementValue"]);//計算六都總雨量
-                    station_in_city[data[i]["parameter"][0]["parameterValue"]]++;//觀測站數量+1
+                }   
+            }
+            if (district){
+                return dist;
+            }else{
+                for (key in precipitation_in_city){//將總雨量除以觀測站數量得到六都24H平均雨量
+                    precipitation_in_city[key]=precipitation_in_city[key]/station_in_city[key];
                 }
-            }
-            for (key in precipitation_in_city){//將總雨量除以觀測站數量得到六都24H平均雨量
-                precipitation_in_city[key]=precipitation_in_city[key]/station_in_city[key];
-            }
-            console.log(precipitation_in_city);
-            return precipitation_in_city;
-        }
+                return precipitation_in_city;
+            }       
     })
 }
-
-export async function get_3h_precipitation_in_Municipality(district){
-    info["elementName"]="HOUR_3";
-    return await fetch(url_api).then(response=>{
-        return response.json();
-    }).then(result=>{
-        return result["records"]["location"];
-    }).then(data=>{
-        if(district){
-            for (let i=0;i<data.length;i++){//跑全部資料
-                if (data[i]["parameter"][0]["parameterValue"] == district){//判斷是否為6都資料
-                    if(data[i]["weatherElement"][0]["elementValue"]<0){//當6都資料中的雨量小於0
-                        continue;//進入下一個迴圈(剔除異常資訊)
-                    }
-                    dist[data[i]["locationName"]]=Number(data[i]["weatherElement"][0]["elementValue"]);//計算六都總雨量
-                }
-            }
-            console.log(dist);
-            return dist;
-        }else{
-            for (let i=0;i<data.length;i++){//跑全部資料
-                if (data[i]["parameter"][0]["parameterValue"] in precipitation_in_city){//判斷是否為6都資料
-                    if(data[i]["weatherElement"][0]["elementValue"]<0){//當6都資料中的雨量小於0
-                        continue;//進入下一個迴圈(剔除異常資訊)
-                    }
-                    precipitation_in_city[data[i]["parameter"][0]["parameterValue"]]+=Number(data[i]["weatherElement"][0]["elementValue"]);//計算六都總雨量
-                    station_in_city[data[i]["parameter"][0]["parameterValue"]]++;//觀測站數量+1
-                }
-            }
-            for (key in precipitation_in_city){//將總雨量除以觀測站數量得到六都24H平均雨量
-                precipitation_in_city[key]=precipitation_in_city[key]/station_in_city[key];
-            }
-            console.log(precipitation_in_city);
-            return precipitation_in_city;
-        }
-    })
-}
-
-export async function get_10m_precipitation_in_Municipality(district){
-    info["elementName"]="MIN_10";
-    return await fetch(url_api).then(response=>{
-        return response.json();
-    }).then(result=>{
-        return result["records"]["location"];
-    }).then(data=>{
-        if(district){
-            for (let i=0;i<data.length;i++){//跑全部資料
-                if (data[i]["parameter"][0]["parameterValue"] == district){//判斷是否為6都資料
-                    if(data[i]["weatherElement"][0]["elementValue"]<0){//當6都資料中的雨量小於0
-                        continue;//進入下一個迴圈(剔除異常資訊)
-                    }
-                    dist[data[i]["locationName"]]=Number(data[i]["weatherElement"][0]["elementValue"]);//計算六都總雨量
-                }
-            }
-            console.log(dist);
-            return dist;
-        }else{
-            for (let i=0;i<data.length;i++){//跑全部資料
-                if (data[i]["parameter"][0]["parameterValue"] in precipitation_in_city){//判斷是否為6都資料
-                    if(data[i]["weatherElement"][0]["elementValue"]<0){//當6都資料中的雨量小於0
-                        continue;//進入下一個迴圈(剔除異常資訊)
-                    }
-                    precipitation_in_city[data[i]["parameter"][0]["parameterValue"]]+=Number(data[i]["weatherElement"][0]["elementValue"]);//計算六都總雨量
-                    station_in_city[data[i]["parameter"][0]["parameterValue"]]++;//觀測站數量+1
-                }
-            }
-            for (key in precipitation_in_city){//將總雨量除以觀測站數量得到六都24H平均雨量
-                precipitation_in_city[key]=precipitation_in_city[key]/station_in_city[key];
-            }
-            console.log(precipitation_in_city);
-            return precipitation_in_city;
-        }
-    })
-}
-
-// get_24h_precipitation_in_Municipality(null);
-// get_3h_precipitation_in_Municipality(null);
-// get_10m_precipitation_in_Municipality(null);
-
-// get_24h_precipitation_in_Municipality("桃園市");
-// get_3h_precipitation_in_Municipality("桃園市");
-// get_10m_precipitation_in_Municipality("桃園市");
