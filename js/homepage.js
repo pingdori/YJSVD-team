@@ -32,6 +32,15 @@ async function init(district){
             }
         }) 
     }
+
+    raindropButton.forEach((item, index, array) => {
+        item.addEventListener('click', function () {
+            city = raindropSubtitle[index];
+            imagePath = cityImage[city.textContent];
+            image.src = imagePath;
+            container.appendChild(image);
+        })
+    })
 }
 
 function clean_content(){
