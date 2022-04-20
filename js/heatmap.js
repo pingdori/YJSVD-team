@@ -1,5 +1,5 @@
 function initMap() {
-    let url= "https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/O-A0002-001?Authorization=CWB-90659942-2307-4DC2-9510-FB641B82269F&format=JSON&elementName=DAY_3";
+    let url= "https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/O-A0002-001?Authorization=CWB-90659942-2307-4DC2-9510-FB641B82269F&format=JSON&elementName=HOUR_24";
 
     fetch(url)
     .then(res => res.json())
@@ -29,14 +29,27 @@ function initMap() {
     // 處理每個資料
     locations.forEach(element => {
 
+      //console.log(element)
+
       // 把雨量作為權重
       let weight = () => {
 
-        // 1：60分鐘。 2：10分鐘。 3：3小時。 4：6小時。 5：12小時。 6：24小時。 7：今天。 8：2天內。 9：3天內。
-        let w = Number(element.weatherElement[9].elementValue.value.split('.')[0]);
+        /*
+        0: {elementName: 'ELEV', elementValue: {…}}
+        1: {elementName: 'RAIN', elementValue: {…}}
+        2: {elementName: 'MIN_10', elementValue: {…}}
+        3: {elementName: 'HOUR_3', elementValue: {…}}
+        4: {elementName: 'HOUR_6', elementValue: {…}}
+        5: {elementName: 'HOUR_12', elementValue: {…}}
+        6: {elementName: 'HOUR_24', elementValue: {…}}
+        7: {elementName: 'NOW', elementValue: {…}}
+        8: {elementName: 'latest_2days', elementValue: {…}}
+        9: {elementName: 'latest_3days', elementValue: {…}}
+        */
+        let w = Number(element.weatherElement[6].elementValue.value);
 
         // 遇到 -998、-999 時，表雨量為 0
-        if(w === -998 || w === -999) { 
+        if(w == -998.00 || w == -999.00) { 
           return 0 
         }
         else { return w }
