@@ -11,6 +11,7 @@ const cityImage = {
     '桃園市': '../images/taoyuan.jpg',
 }
 
+// 預先載入臺北市的背景圖片
 const image = document.createElement('img')
 image.className = "background__image";
 image.src = '../images/taipei.jpg'
