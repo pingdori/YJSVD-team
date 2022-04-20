@@ -22,6 +22,14 @@ body {
     padding: 0px 12px;
 }
 
+.background__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+}
+
 .header {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -45,6 +53,7 @@ body {
     border: 3px solid black;
     padding: 12px;
     text-align: center;
+    border-radius: 5px;
 
     display: flex;
     flex-direction: column;
@@ -62,7 +71,12 @@ button {
     width: 200px;
     margin: 0 auto;
     font-size: 19px;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+button:hover {
+    color: #03989E;
 }
 
 @media (max-width: 1200px) {
