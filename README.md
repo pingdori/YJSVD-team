@@ -51,7 +51,17 @@
 
 ### 程式碼規範(待更新)
 
-### 參數說明(待更新)
+### 參數說明
+| 參數名稱 | 資料類型 | 取值範圍 |  說明     |
+|  ------- | ------- | ------- | ------- |
+| url     | string  | -       | API 前綴 |
+| info  | key/value  | - | API授權內容 |
+| station_in_city  | key/value  | - | 各直轄市的觀測站數量 |
+| precipitation_in_city  | key/value  | - | 雨量單位：毫米 |
+| dist  | Object  | - | 放各區降雨量 |
+| info_to_string  | string  | - | 將json變為字串 |
+|url_api|string|-|完整API: url+info_to_string|
+
 
 ## 開發流程
 ### 小組討論
@@ -60,7 +70,7 @@
 - API 串接 : 尹騰慶
 - 前端畫面切版 ：蔡明達
 - 定義框架、製作與報告 PPT：黃上科
-- Code Review、參數說明、READEME彙整 ：郭德荃
+- Code Review、READEME彙整 ：郭德荃
 - 寫說明文件 document、開Repository：李蕙萍
 #### 網頁畫面與功能參考：
 - 請參閱參考資料之[數據看台灣，台灣即時雨量資訊](https://www.taiwanstat.com/)
