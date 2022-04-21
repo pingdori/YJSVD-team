@@ -60,7 +60,11 @@
 | precipitation_in_city | key/value | -        | 雨量單位：毫米               |
 | dist                  | Object    | -        | 放各區降雨量                 |
 | info_to_string        | string    | -        | 將 json 變為字串             |
-| url_api               | string    | -        | 完整 API: url+info_to_string |
+| map                   | Object    | -        | new google map object       |
+| locations             | array     | -        | 觀測站地點                    |
+| heatmapData           | array     | -        | 放 Heatmap 的資料陣列         |
+| rainData              | Object    | -        | 放入權重至指定地點             |
+| heatmap               | string    | -        | new heatmap object          |
 
 ## 📑 開發流程
 
