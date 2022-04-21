@@ -6,6 +6,7 @@
 
 ![screen shot](./images/screen%20shot.gif "screen shot")
 
+
 ## 🛠️ 功能
 
 ### 網頁即時呈現六都即時雨量
@@ -17,6 +18,8 @@
 🖱️ 滑鼠單擊「點擊觀看」即可呈現當直轄市各區即時雨量
 
 🖼️ 點擊不同直轄市，背景城市畫面會進行更動
+
+🌏 另呈現24小時內的台灣雨量
 
 ## 📂 目錄
 
@@ -44,7 +47,7 @@
 
 - HTML
 - CSS：採 BEM 命名法、以 Grid 實踐 RWD
-- JavaScript：串接中央氣象局開放資料平臺之資料 API
+- JavaScript：串接中央氣象局開放資料平臺之資料 API、Google Maps APIs的串接應用
 
 ### 開發工具
 
@@ -89,6 +92,8 @@
 
 [數據看台灣，台灣即時雨量資訊](https://www.taiwanstat.com/)
 
+[Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/overview#maps_map_simple-javascript)
+
 ## 😎 Contributors
 
 1. [Sam](https://github.com/TWcamel)
@@ -106,6 +111,7 @@
 4. [Vicky](https://github.com/vicky-playground)
    - 彙整專案 README
    - Code Review
+   - 熱點圖建立
 5. [Yin](https://github.com/Yintc123)
    - API 串接 
    - 完成前端 View 整合
