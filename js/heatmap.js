@@ -6,10 +6,10 @@ function initMap() {
     .then(res => {
 
     let map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 8,
+      zoom: 6.65,
       center: {
-        lat: 23.833090,
-        lng: 121.563438
+        lat: 23.7281136,
+        lng: 118.6260081
       },
       mapTypeId: 'hybrid',
       zoomControl: false,
@@ -73,20 +73,22 @@ function initMap() {
       // 外往內(密度低 -> 高)漸層
       gradient:  [
         'rgba(0, 0, 255, 0)',
-        'rgba(23, 120, 189, 0.1)',
-        'rgba(23, 120, 189, 0.2)',
-        'rgba(23, 120, 189, 0.3)',
-        'rgba(23, 120, 189, 0.4)',
-        'rgba(23, 120, 189, 0.5)',
-        'rgba(23, 120, 189, 0.6)',
-        'rgba(23, 120, 189, 0.7)',
-        'rgba(23, 120, 189, 0.8)',
-        'rgba(23, 120, 189, 0.9)',
-        'rgba(75, 97, 255, 1)',
+        'rgba(50, 40, 255, 0.1)',
+        'rgba(50, 40, 255, 0.2)',
+        'rgba(50, 40, 255, 0.3)',
+        'rgba(50, 40, 255, 0.4)',
+        'rgba(50, 40, 255, 0.5)',
+        'rgba(50, 40, 255, 0.6)',
+        'rgba(50, 40, 255, 0.7)',
+        'rgba(50, 40, 255, 0.8)',
+        'rgba(50, 40, 255, 0.9)',
+        'rgba(23, 120, 189, 1)',
+        'rgba(60, 40, 255, 1)',
         'rgba(29, 35, 255, 1)'
       ],
       // 個別資料點的影響半徑，以像素為單位
-      radius: 15
+      radius: 20,
+      opacity:1
     });
 
     // 把 heatmap 放上 google map
