@@ -1,7 +1,7 @@
-function initMap() {
+async function init_map() {
     let url= "https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/O-A0002-001?Authorization=CWB-90659942-2307-4DC2-9510-FB641B82269F&format=JSON&elementName=HOUR_24";
 
-    fetch(url)
+    await fetch(url)
     .then(res => res.json())
     .then(res => {
 
@@ -24,7 +24,7 @@ function initMap() {
     //console.log(locations)
 
     // 放 Heatmap 的資料陣列
-    let heatmapData = [];
+    let heatmap_data = [];
 
     // 處理每個資料
     locations.forEach(element => {
@@ -56,18 +56,18 @@ function initMap() {
 
       };
 
-      let rainData = {
+      let rain_data = {
         location: new google.maps.LatLng(element.lat, element.lon),
         weight: weight()
       };
 
-      heatmapData.push(rainData);
+      heatmap_data.push(rain_data);
 
     });
 
     // 生成 heatmap 
     let heatmap = new google.maps.visualization.HeatmapLayer({
-      data: heatmapData,
+      data: heatmap_data,
       // 地圖放大縮小時，熱點圖是否要跟著加強。 false 就是會， true 就是不會
       dissipating: true, 
       // 外往內(密度低 -> 高)漸層
