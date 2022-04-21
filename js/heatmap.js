@@ -1,7 +1,7 @@
-function init_map() {
+async function init_map() {
     let url= "https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/O-A0002-001?Authorization=CWB-90659942-2307-4DC2-9510-FB641B82269F&format=JSON&elementName=HOUR_24";
 
-    fetch(url)
+    await fetch(url)
     .then(res => res.json())
     .then(res => {
 
