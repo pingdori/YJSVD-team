@@ -125,8 +125,8 @@
    - Code Review
 4. [Vicky](https://github.com/vicky-playground)
    - 彙整專案 README
-   - Code Review
    - 熱點圖建立
+   - Code Review
 5. [Yin](https://github.com/Yintc123)
    - API 串接 
    - 完成前端 View 整合
