@@ -26,14 +26,11 @@ async function init(district){
                 window.location=window.location.href;
             }
             const title=document.getElementsByClassName("raindrop__subtitle mb-15")[i];
-            init(title.textContent);
-            for (let i=0;i<raindrop__button.length;i++){
-                raindrop__button[i].textContent="返回";
-            }
             city = raindropSubtitle[i];
             imagePath = cityImage[city.textContent];
             image.src = imagePath;
             container.appendChild(image);
+            init(title.textContent);
         }) 
     }
 }
