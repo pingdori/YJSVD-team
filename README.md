@@ -2,10 +2,10 @@
 
 ## 🍹 簡介
 
-本專案透過中央氣象局開放資料平臺之資料，擷取[API](https://opendata.cwb.gov.tw/dist/opendata-swagger.html)以文字的方式展示六都的即時雨量
+本專案透過中央氣象局開放資料平臺之資料，擷取[API](https://opendata.cwb.gov.tw/dist/opendata-swagger.html)以文字的方式展示六都的即時雨量，並呈現24小時內的台灣整體觀測雨量
 
 ![screen shot](./images/screen%20shot.gif "screen shot")
-
+![screen shot](./images/Screen%20Shot%202022-04-21%20at%209.06.00%20PM.png)
 
 ## 🛠️ 功能
 
@@ -19,7 +19,7 @@
 
 🖼️ 點擊不同直轄市，背景城市畫面會進行更動
 
-🌏 另呈現24小時內的台灣雨量
+🌏 另有24小時內的台灣整體觀測雨量
 
 ## 📂 目錄
 
