@@ -21,7 +21,7 @@ async function init(district){
         
     }
 
-    initMap();
+    init_map();
 
     for (let i=0;i<raindrop__button.length;i++){
         raindrop__button[i].addEventListener("click", ()=>{
