@@ -18,7 +18,10 @@ async function init(district){
         show_precipitation(data_10m, i, 0);
         show_precipitation(data_3h, i, 1);
         show_precipitation(data_24h, i, 2);
+        
     }
+
+    init_map();
 
     for (let i=0;i<raindrop__button.length;i++){
         raindrop__button[i].addEventListener("click", ()=>{
@@ -26,14 +29,11 @@ async function init(district){
                 window.location=window.location.href;
             }
             const title=document.getElementsByClassName("raindrop__subtitle mb-15")[i];
-            init(title.textContent);
-            for (let i=0;i<raindrop__button.length;i++){
-                raindrop__button[i].textContent="返回";
-            }
             city = raindropSubtitle[i];
             imagePath = cityImage[city.textContent];
             image.src = imagePath;
             container.appendChild(image);
+            init(title.textContent);
         }) 
     }
 }
