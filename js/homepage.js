@@ -1,4 +1,4 @@
-const city=document.getElementsByClassName("raindrop__subtitle mb-15");
+const city_subtitle=document.getElementsByClassName("raindrop__subtitle mb-15");
 const raindrop__button=document.getElementsByClassName("raindrop__button");
 
 async function init(district){
@@ -10,7 +10,7 @@ async function init(district){
     for (let i=0;i<Object.keys(data_10m).length;i++){
         create_raindrop_item();
     }
-    for (let i=0;i<city.length;i++){
+    for (let i=0;i<city_subtitle.length;i++){
         if (district==null){
             raindrop__button[i].textContent="觀看資訊";
         }
@@ -26,10 +26,11 @@ async function init(district){
                 window.location=window.location.href;
             }
             const title=document.getElementsByClassName("raindrop__subtitle mb-15")[i];
+            city = raindropSubtitle[i];
+            imagePath = cityImage[city.textContent];
+            image.src = imagePath;
+            container.appendChild(image);
             init(title.textContent);
-            for (let i=0;i<raindrop__button.length;i++){
-                raindrop__button[i].textContent="返回";
-            }
         }) 
     }
 }
@@ -63,7 +64,7 @@ function change_subtitle(data, district_index){
 }
 
 function show_precipitation(data, district_index, list_index){
-    const each_city=city[district_index];
+    const each_city=city_subtitle[district_index];
     const precipitation_value=document.getElementsByClassName("raindrop__intro--hint")[3*district_index+list_index];
     precipitation_value.textContent=data[each_city.textContent];
 }
