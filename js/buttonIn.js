@@ -18,11 +18,13 @@ image.src = './images/taipei.jpg'
 container.appendChild(image);
 
 let city
-// raindropButton.forEach((item, index, array) => {
-//     item.addEventListener('click', function () {
-//         city = raindropSubtitle[index];
-//         imagePath = cityImage[city.textContent];
-//         image.src = imagePath;
-//         container.appendChild(image);
-//     })
-// })
+
+raindropButton.forEach((item, index, array) => {
+    item.addEventListener('click', function () {
+        city = raindropSubtitle[index];
+        imagePath = cityImage[city.textContent];
+        image.src = imagePath;
+        container.appendChild(image);
+    })
+})
+
