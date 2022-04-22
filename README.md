@@ -58,7 +58,7 @@
 - CSS：採 BEM 命名法。如：`raindrop__intro--hint` 
 - Javascript：
    - Variable, Arguments: 蛇型命名法(Snake case)。如： `station_in_city`
-   - Function: 蛇型命名法(Snake case)。如：`get_precipitation_in_Municipality()`
+   - Function: 蛇型命名法(Snake case)。如：`get_precipitation_in_municipality()`
 
 ### 參數說明
 
